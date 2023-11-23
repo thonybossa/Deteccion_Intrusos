@@ -25,9 +25,9 @@ def upload(img,image_path):
 
     # Configura tus credenciales de ImageKit
     tk = ImageKit(
-        private_key="private_Ur2g2/tJ5BdOhAPefXLyaXdmSaw=",
-        public_key="public_ECwE5F0HN3F57mxlQUPfxTjD7H8=",
-        url_endpoint="https://ik.imagekit.io/deteccionIntrusos/"
+        private_key="",
+        public_key="",
+        url_endpoint=""
     )
 
     # Sube imagen
