@@ -1,6 +1,3 @@
-activate_this = '/home/gomezan/bin/bin/activate_this.py'
-exec(open(activate_this).read(), dict(__file__=activate_this))
-
 import socket
 from imagekitio import ImageKit
 from base64 import b64encode
