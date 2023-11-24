@@ -1,0 +1,15 @@
+[Unit]
+Description=Servicio de gestion en la nube
+After=multi-user.target
+
+[Service]
+Type=simple
+User=ab
+WorkingDirectory=/home/ab/Deteccion_Intrusos
+ExecStart=/usr/bin/python3 /home/ab/Deteccion_Intrusos/cloudManager.py
+Restart=always
+StandardOutput=/home/ab/Deteccion_Intrusos/log_systemd_cloud.txt
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
