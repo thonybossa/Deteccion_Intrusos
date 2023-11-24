@@ -5,6 +5,14 @@ import cv2
 import numpy as np
 import os
 import datetime
+import sys
+
+# Redirección de la salida estándar y errores estándar al archivo de log
+log_file_path = "/home/ab/Deteccion_Intrusos/log_systemd_main.txt"
+log_file = open(log_file_path, "a")
+sys.stdout = log_file
+sys.stderr = log_file
+
 
 #Función encargada de almacenar las imagenes de intrusos en el buffer
 def guardarBuffer(imagen):

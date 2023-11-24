@@ -3,6 +3,14 @@ from imagekitio import ImageKit
 from base64 import b64encode
 import os
 import requests
+import sys
+
+# Redirección de la salida estándar y errores estándar al archivo de log
+log_file_path = "/home/ab/Deteccion_Intrusos/log_systemd_cloud.txt"
+log_file = open(log_file_path, "a")
+sys.stdout = log_file
+sys.stderr = log_file
+
 
 #Revisa si hay internet
 def checkNet():
@@ -22,9 +30,9 @@ def upload(img,image_path):
 
     # Configura tus credenciales de ImageKit
     tk = ImageKit(
-        private_key="",
-        public_key="",
-        url_endpoint=""
+        private_key="private_aCNBgmVlr21paDKQdv+Td93l70I=",
+        public_key="public_mgratcvyVArSW2M9XugG3+LmE8w=",
+        url_endpoint="https://ik.imagekit.io/DeteccionIntrusos"
     )
 
     # Sube imagen
@@ -36,8 +44,8 @@ def upload(img,image_path):
     return code
 
 # Ubidots API settings
-UBIDOTS_TOKEN = "BBUS-V4bpLQ0MZYdUGWwFRBEsmyfpb6UWf1"
-VARIABLE_ID = "text"
+UBIDOTS_TOKEN = "BBUS-8PLTjPFY4mvca2xCvmMyWyPXE80G5z"
+VARIABLE_ID = "flag"
 API_URL = f"https://industrial.api.ubidots.com/api/v1.6/devices/default/{VARIABLE_ID}/values"
 
 # Función encargada de comunicar el evento a Ubidots
@@ -52,7 +60,7 @@ def sendNube():
         print(f"Comunicación fallida, código: {response.status_code}")
 
 #Path del buffer
-path="/home/gomezan/Documents/deteccionIntrusos/buffer"
+path="/home/ab/Deteccion_Intrusos/buffer"
 
 while(True):
     if (checkNet()):
