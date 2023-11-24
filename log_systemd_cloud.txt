@@ -1,50 +1,50 @@
-2023-11-24T15:23:11.719802 -   File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 73, in create_connection
-2023-11-24T15:23:11.725503 -     2023-11-24T15:23:11.729675 - for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):2023-11-24T15:23:11.733936 - 
-2023-11-24T15:23:11.738140 -   File "/usr/lib/python3.9/socket.py", line 953, in getaddrinfo
-2023-11-24T15:23:11.750496 -     2023-11-24T15:23:11.759760 - for res in _socket.getaddrinfo(host, port, family, type, proto, flags):2023-11-24T15:23:11.765412 - 
-2023-11-24T15:23:11.774417 - socket2023-11-24T15:23:11.778808 - .2023-11-24T15:23:11.788513 - gaierror2023-11-24T15:23:11.792794 - : 2023-11-24T15:23:11.796964 - [Errno -3] Temporary failure in name resolution2023-11-24T15:23:11.801047 - 
-2023-11-24T15:23:11.805023 - 
-During handling of the above exception, another exception occurred:
-
-2023-11-24T15:23:11.808869 - Traceback (most recent call last):
-2023-11-24T15:23:11.812783 -   File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 699, in urlopen
-2023-11-24T15:23:11.820220 -     2023-11-24T15:23:11.824308 - httplib_response = self._make_request(2023-11-24T15:23:11.829036 - 
-2023-11-24T15:23:11.834599 -   File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 382, in _make_request
-2023-11-24T15:23:11.839228 -     2023-11-24T15:23:11.842941 - self._validate_conn(conn)2023-11-24T15:23:11.846654 - 
-2023-11-24T15:23:11.850398 -   File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1012, in _validate_conn
-2023-11-24T15:23:11.854811 -     2023-11-24T15:23:11.858525 - conn.connect()2023-11-24T15:23:11.862608 - 
-2023-11-24T15:23:11.873595 -   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 353, in connect
-2023-11-24T15:23:12.855198 -     2023-11-24T15:23:12.859361 - conn = self._new_conn()2023-11-24T15:23:12.863037 - 
-2023-11-24T15:23:12.866757 -   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 181, in _new_conn
-2023-11-24T15:23:12.870497 -     2023-11-24T15:23:12.874232 - raise NewConnectionError(2023-11-24T15:23:12.878151 - 
-2023-11-24T15:23:12.881984 - urllib3.exceptions2023-11-24T15:23:12.885779 - .2023-11-24T15:23:12.889600 - NewConnectionError2023-11-24T15:23:12.893372 - : 2023-11-24T15:23:12.897062 - <urllib3.connection.HTTPSConnection object at 0x7fb513b280>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution2023-11-24T15:23:12.900774 - 
-2023-11-24T15:23:12.904528 - 
-During handling of the above exception, another exception occurred:
-
-2023-11-24T15:23:12.908213 - Traceback (most recent call last):
-2023-11-24T15:23:12.912063 -   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
-2023-11-24T15:23:12.920025 -     2023-11-24T15:23:12.924164 - resp = conn.urlopen(2023-11-24T15:23:12.928241 - 
-2023-11-24T15:23:12.932082 -   File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 755, in urlopen
-2023-11-24T15:23:12.936235 -     2023-11-24T15:23:12.940060 - retries = retries.increment(2023-11-24T15:23:12.943844 - 
-2023-11-24T15:23:12.947694 -   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 574, in increment
-2023-11-24T15:23:12.954253 -     2023-11-24T15:23:12.958163 - raise MaxRetryError(_pool, url, error or ResponseError(cause))2023-11-24T15:23:12.961986 - 
-2023-11-24T15:23:12.965850 - urllib3.exceptions2023-11-24T15:23:12.969678 - .2023-11-24T15:23:12.973499 - MaxRetryError2023-11-24T15:23:12.977364 - : 2023-11-24T15:23:12.981152 - HTTPSConnectionPool(host='industrial.api.ubidots.com', port=443): Max retries exceeded with url: /api/v1.6/devices/default/flag/values (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fb513b280>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))2023-11-24T15:23:12.984889 - 
-2023-11-24T15:23:12.988703 - 
-During handling of the above exception, another exception occurred:
-
-2023-11-24T15:23:12.992499 - Traceback (most recent call last):
-2023-11-24T15:23:12.996244 -   File "/home/ab/Deteccion_Intrusos/cloudManager.py", line 110, in <module>
-2023-11-24T15:23:13.000091 -     2023-11-24T15:23:13.003916 - sendNube()2023-11-24T15:23:13.007771 - 
-2023-11-24T15:23:13.011595 -   File "/home/ab/Deteccion_Intrusos/cloudManager.py", line 90, in sendNube
-2023-11-24T15:23:13.015552 -     2023-11-24T15:23:13.019475 - response = requests.post(API_URL, json=payload, headers=headers)2023-11-24T15:23:13.023577 - 
-2023-11-24T15:23:13.027361 -   File "/usr/lib/python3/dist-packages/requests/api.py", line 119, in post
-2023-11-24T15:23:13.032826 -     2023-11-24T15:23:13.036662 - return request('post', url, data=data, json=json, **kwargs)2023-11-24T15:23:13.040441 - 
-2023-11-24T15:23:13.044251 -   File "/usr/lib/python3/dist-packages/requests/api.py", line 61, in request
-2023-11-24T15:23:13.048125 -     2023-11-24T15:23:13.052022 - return session.request(method=method, url=url, **kwargs)2023-11-24T15:23:13.055844 - 
-2023-11-24T15:23:13.059801 -   File "/usr/lib/python3/dist-packages/requests/sessions.py", line 542, in request
-2023-11-24T15:23:13.070111 -     2023-11-24T15:23:13.074510 - resp = self.send(prep, **send_kwargs)2023-11-24T15:23:13.079072 - 
-2023-11-24T15:23:13.085076 -   File "/usr/lib/python3/dist-packages/requests/sessions.py", line 655, in send
-2023-11-24T15:23:13.089532 -     2023-11-24T15:23:13.093760 - r = adapter.send(request, **kwargs)2023-11-24T15:23:13.097685 - 
-2023-11-24T15:23:13.101588 -   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
-2023-11-24T15:23:13.105926 -     2023-11-24T15:23:13.109772 - raise ConnectionError(e, request=request)2023-11-24T15:23:13.113653 - 
-2023-11-24T15:23:13.117521 - requests.exceptions2023-11-24T15:23:13.121439 - .2023-11-24T15:23:13.125311 - ConnectionError2023-11-24T15:23:13.129097 - : 2023-11-24T15:23:13.133053 - HTTPSConnectionPool(host='industrial.api.ubidots.com', port=443): Max retries exceeded with url: /api/v1.6/devices/default/flag/values (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fb513b280>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))2023-11-24T15:23:13.136880 - 
+2023-11-24T16:58:40.218220 - Conectado2023-11-24T16:58:40.223532 - 
+2023-11-24T16:58:40.297432 - Conectado2023-11-24T16:58:40.302660 - 
+2023-11-24T16:58:40.373812 - Conectado2023-11-24T16:58:40.378619 - 
+2023-11-24T16:58:40.451613 - Conectado2023-11-24T16:58:40.456707 - 
+2023-11-24T16:58:40.532982 - Conectado2023-11-24T16:58:40.539224 - 
+2023-11-24T16:58:40.614989 - Conectado2023-11-24T16:58:40.620997 - 
+2023-11-24T16:58:40.697581 - Conectado2023-11-24T16:58:40.703726 - 
+2023-11-24T16:58:40.779538 - Conectado2023-11-24T16:58:40.785559 - 
+2023-11-24T16:58:40.858716 - Conectado2023-11-24T16:58:40.864920 - 
+2023-11-24T16:58:40.876641 - Conectado2023-11-24T16:58:40.882950 - 
+2023-11-24T16:58:40.959740 - Conectado2023-11-24T16:58:40.965748 - 
+2023-11-24T16:58:41.043926 - Conectado2023-11-24T16:58:41.050213 - 
+2023-11-24T16:58:41.137421 - Conectado2023-11-24T16:58:41.143721 - 
+2023-11-24T16:58:41.155733 - Conectado2023-11-24T16:58:41.162497 - 
+2023-11-24T16:58:41.174717 - Conectado2023-11-24T16:58:41.181363 - 
+2023-11-24T16:58:41.263377 - Conectado2023-11-24T16:58:41.269021 - 
+2023-11-24T16:58:41.343730 - Conectado2023-11-24T16:58:41.349739 - 
+2023-11-24T16:58:41.426711 - Conectado2023-11-24T16:58:41.432890 - 
+2023-11-24T16:58:41.521273 - Conectado2023-11-24T16:58:41.547542 - 
+2023-11-24T16:58:41.626993 - Conectado2023-11-24T16:58:41.632452 - 
+2023-11-24T16:58:41.710069 - Conectado2023-11-24T16:58:41.715504 - 
+2023-11-24T16:58:41.796226 - Conectado2023-11-24T16:58:41.801503 - 
+2023-11-24T16:58:41.886760 - Conectado2023-11-24T16:58:41.891901 - 
+2023-11-24T16:58:41.962406 - Conectado2023-11-24T16:58:41.967574 - 
+2023-11-24T16:58:42.048754 - Conectado2023-11-24T16:58:42.053978 - 
+2023-11-24T16:58:42.145551 - Conectado2023-11-24T16:58:42.150738 - 
+2023-11-24T16:58:42.238310 - Conectado2023-11-24T16:58:42.243447 - 
+2023-11-24T16:58:42.323743 - Conectado2023-11-24T16:58:42.328935 - 
+2023-11-24T16:58:42.401151 - Conectado2023-11-24T16:58:42.406320 - 
+2023-11-24T16:58:42.480340 - Conectado2023-11-24T16:58:42.485488 - 
+2023-11-24T16:58:42.521715 - Conectado2023-11-24T16:58:42.526898 - 
+2023-11-24T16:58:42.603282 - Conectado2023-11-24T16:58:42.608884 - 
+2023-11-24T16:58:42.690776 - Conectado2023-11-24T16:58:42.695993 - 
+2023-11-24T16:58:42.775968 - Conectado2023-11-24T16:58:42.781174 - 
+2023-11-24T16:58:42.790040 - Conectado2023-11-24T16:58:42.795113 - 
+2023-11-24T16:58:42.867223 - Conectado2023-11-24T16:58:42.872534 - 
+2023-11-24T16:58:42.952245 - Conectado2023-11-24T16:58:42.957895 - 
+2023-11-24T16:58:43.039384 - Conectado2023-11-24T16:58:43.045030 - 
+2023-11-24T16:58:43.117282 - Conectado2023-11-24T16:58:43.122789 - 
+2023-11-24T16:58:43.196700 - Conectado2023-11-24T16:58:43.201865 - 
+2023-11-24T16:58:43.281141 - Conectado2023-11-24T16:58:43.286374 - 
+2023-11-24T16:58:43.371613 - Conectado2023-11-24T16:58:43.376768 - 
+2023-11-24T16:58:43.464171 - Conectado2023-11-24T16:58:43.469357 - 
+2023-11-24T16:58:43.542275 - Conectado2023-11-24T16:58:43.547427 - 
+2023-11-24T16:58:43.620733 - Conectado2023-11-24T16:58:43.625953 - 
+2023-11-24T16:58:43.698980 - Conectado2023-11-24T16:58:43.704111 - 
+2023-11-24T16:58:43.783992 - Conectado2023-11-24T16:58:43.789220 - 
+2023-11-24T16:58:43.871098 - Conectado2023-11-24T16:58:43.876198 - 
+2023-11-24T16:58:43.904945 - Conectado2023-11-24T16:58:43.910193 - 
+2023-11-24T16:58:43.983190 - Conectado
