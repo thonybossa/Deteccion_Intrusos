@@ -8,8 +8,12 @@ User=ab
 WorkingDirectory=/home/ab/Deteccion_Intrusos
 ExecStart=/usr/bin/python3 /home/ab/Deteccion_Intrusos/cloudManager.py
 Restart=always
-StandardOutput=/home/ab/Deteccion_Intrusos/log_systemd_cloud.txt
+#StandardOutput=/home/ab/Deteccion_Intrusos/log_systemd_cloud.txt
+#StandardError=syslog
+StandardOutput=syslog
 StandardError=syslog
+SyslogIdentifier=cloudManager
+
 
 [Install]
 WantedBy=multi-user.target

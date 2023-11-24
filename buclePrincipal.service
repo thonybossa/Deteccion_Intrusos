@@ -8,8 +8,12 @@ User=ab
 WorkingDirectory=/home/ab/Deteccion_Intrusos
 ExecStart=/usr/bin/python3 /home/ab/Deteccion_Intrusos/buclePrincipal.py
 Restart=always
-StandardOutput=/home/ab/Deteccion_Intrusos/log_systemd_main.txt
+#StandardOutput=/home/ab/Deteccion_Intrusos/log_systemd_main.txt
+#StandardError=syslog
+StandardOutput=syslog
 StandardError=syslog
+SyslogIdentifier=buclePrincipal
+
 
 [Install]
 WantedBy=multi-user.target
