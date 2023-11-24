@@ -7,11 +7,46 @@ import os
 import datetime
 import sys
 
+# Clase para manejar la salida del log
+class Logger(object):
+    def __init__(self, filename, max_lines=50):
+        self.terminal = sys.stdout
+        self.log = open(filename, "a")
+        self.filename = filename
+        self.max_lines = max_lines
+        self.line_count = 0
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(f"{datetime.datetime.now().isoformat()} - {message}")
+        self.line_count += 1
+        if self.line_count > self.max_lines:
+            self.trim_log()
+
+    def trim_log(self):
+        with open(self.filename, "r") as file:
+            lines = file.readlines()
+        with open(self.filename, "w") as file:
+            file.writelines(lines[-self.max_lines:])
+        self.line_count = self.max_lines
+
+    def flush(self):
+        pass
+
 # Redirección de la salida estándar y errores estándar al archivo de log
-log_file_path = "/home/ab/Deteccion_Intrusos/log_systemd_main.txt"
-log_file = open(log_file_path, "a")
-sys.stdout = log_file
-sys.stderr = log_file
+sys.stdout = Logger("/home/ab/Deteccion_Intrusos/log_systemd_main.txt")
+sys.stderr = sys.stdout
+
+# Redirección de la salida estándar y errores estándar al archivo de log
+sys.stdout = Logger("/home/ab/Deteccion_Intrusos/log_systemd_main.txt")
+sys.stderr = sys.stdout
+
+
+# Redirección de la salida estándar y errores estándar al archivo de log
+#log_file_path = "/home/ab/Deteccion_Intrusos/log_systemd_main.txt"
+#log_file = open(log_file_path, "a")
+#sys.stdout = log_file
+#sys.stderr = log_file
 
 
 #Función encargada de almacenar las imagenes de intrusos en el buffer
