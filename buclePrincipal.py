@@ -80,14 +80,14 @@ def verBuffer():
 
 #Función para detectar rostros
 def detectarRostro(imagen):
-    
+
     # Convertir la imagen a escala de grises
     gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
     # Cargar el clasificador Haarcascade para la detección de rostros
     clasificador_rostros = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     # Detectar rostros en la imagen
     rostros = clasificador_rostros.detectMultiScale(gris, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
-    
+
     if len(rostros) > 0:
         return True
     else:
@@ -117,7 +117,7 @@ def detectarMovimiento(imagen1, imagen2, umbral=30):
 def capturador(q):
     while (True):
         # Inicializar la cámara
-        camera = cv2.VideoCapture(0)  
+        camera = cv2.VideoCapture(0)
         if not camera.isOpened():
             print("Soy el capturador, no se pudo abrir la cámara.")
         else:
@@ -136,20 +136,20 @@ def capturador(q):
 # Función que representa al hilo que detecta movimiento
 def detectorMov(q1,q2):
     previa = q1.get()
-    q1.task_done()    
+    q1.task_done()
     while True:
         actual = q1.get()
         if actual is None:
             break
         flag = detectarMovimiento(previa, actual)
-        
+
         if flag:
             print("Soy el detecMov ¡Se detectó movimiento!")
             q2.put(actual)
         else:
             print(" Soy el detecMov, No hubo movimiento.")
-        
-        previa=actual 
+
+        previa=actual
         q1.task_done()
 
 # Función que representa al hilo que detecta rostros de personas
@@ -159,14 +159,14 @@ def detectorFace(q):
         if img is None:
             break
         flag = detectarRostro(img)
-        
+
         if flag:
             print("Soy el detecFace ¡Se detectó un intruso!")
             #Almacenar en buffer
             guardarBuffer(img)
         else:
             print(" Soy el detecFace, No hay intrusos.")
-        
+
         q.task_done()
 
 
@@ -201,4 +201,3 @@ hiloDetecMov.join()
 hiloDetecFace.join()
 
 print("Proceso terminado")
-
